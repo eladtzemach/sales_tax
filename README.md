@@ -1,8 +1,8 @@
 # Sales Tax
 
-The program was built using:
-Language: Python 3.4
-IDE: PyCharm
+The program was built using: <br />
+Language: Python 3.4 <br />
+IDE: PyCharm <br />
 OS: Windows 8
 
 ## Design:
