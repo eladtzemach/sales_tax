@@ -36,20 +36,23 @@ class TestProduct(unittest.TestCase):
         self.assertRaises(TypeError, Product, 'book', 'category', self.local, 1)
         self.assertRaises(TypeError, Product, 'book', self.books, 'origin', 1)
 
-    # tax for product
-    def test_calculate_tax_local_pass(self):
+    # tax for product - local (0%)
+    def test_calculate_tax_local_0(self):
+        product = Product("some book", self.books, self.local, 10)
+        self.assertEqual(product.calculate_tax(), 0)
+
+    # tax for product - local (10%)
+    def test_calculate_tax_local_10(self):
         product = Product("music CD", self.other, self.local, 10)
         self.assertEqual(product.calculate_tax(), 1.0)
 
-    def test_calculate_tax_local_fail(self):
-        product = Product("music CD", self.other, self.local, 10)
+    # tax for product - imported (5%)
+    def test_calculate_tax_imported_5(self):
+        product = Product("some book", self.books, self.imported, 10)
         self.assertNotEqual(product.calculate_tax(), 0.05)
 
-    def test_calculate_tax_imported_fail(self):
-        product = Product("music CD", self.other, self.imported, 10)
-        self.assertNotEqual(product.calculate_tax(), 1.0)
-
-    def test_calculate_tax_imported_pass(self):
+    # tax for product - imported (15%)
+    def test_calculate_tax_imported_15(self):
         product = Product("music CD", self.other, self.imported, 10)
         self.assertEqual(product.calculate_tax(), 1.5)
 
